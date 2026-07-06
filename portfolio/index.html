@@ -13,6 +13,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ── EmailJS initialisation ──────────────────────────────────────────────────
+  // Replace YOUR_PUBLIC_KEY with the Public Key from emailjs.com → Account
+  (function(){
+    emailjs.init({ publicKey: 'Lr0xd2FOJ01UNMZhU' });
+  })();
+</script>
 
 <style>
   :root{
@@ -1178,39 +1187,42 @@
   modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-  // ---- Contact form ----
+  const EMAILJS_SERVICE_ID  = 'service_h0veyvj';  
+  const EMAILJS_TEMPLATE_ID = 'template_b35cc5a';  
+
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
   const formMsg = document.getElementById('formMsg');
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     submitBtn.disabled = true;
     submitBtn.textContent = 'Compiling your message...';
     formMsg.className = 'form-msg';
+    formMsg.textContent = '';
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const templateParams = {
+      from_name  : document.getElementById('name').value.trim(),
+      from_email : document.getElementById('email').value.trim(),
+      message    : document.getElementById('message').value.trim(),
+      to_name    : 'Mahesh'
+    };
 
-    // NOTE: No backend is connected yet. This opens the visitor's email client
-    // pre-filled with their message so the form works immediately.
-    // Replace this block with a fetch() call to your Spring Boot /api/contact
-    // endpoint once your backend is deployed (see the build guide).
-    setTimeout(() => {
-      try {
-        const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-        const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-        window.location.href = `mailto:mahesh123qr@gmail.com?subject=${subject}&body=${body}`;
-        formMsg.textContent = "Build succeeded — opening your email client to ship this message.";
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+      .then(function(){
+        formMsg.textContent = '✅ Build succeeded — message delivered to inbox!';
         formMsg.classList.add('success');
         form.reset();
-      } catch(err){
-        formMsg.textContent = "Build failed — no stack trace this time, just email mahesh123qr@gmail.com directly.";
+      })
+      .catch(function(err){
+        console.error('EmailJS error:', err);
+        formMsg.textContent = '❌ Transmission failed — please email mahesh123qr@gmail.com directly.';
         formMsg.classList.add('error');
-      }
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message →';
-    }, 600);
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message →';
+      });
   });
 
   // ---- Resume button — resume.pdf is present in the root directory ----
