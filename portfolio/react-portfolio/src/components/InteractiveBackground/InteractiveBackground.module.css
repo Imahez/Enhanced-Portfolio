@@ -1,0 +1,121 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #000000;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Deep background ambient radial gradients */
+.wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% -10%, rgba(124, 58, 237, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 110%, rgba(37, 99, 235, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(79, 70, 229, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Noise overlay */
+.wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(95px);
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.blob1 {
+  width: 680px;
+  height: 680px;
+  top: -15%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+}
+
+.blob2 {
+  width: 560px;
+  height: 560px;
+  top: 15%;
+  right: -12%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+}
+
+.blob3 {
+  width: 720px;
+  height: 720px;
+  bottom: -20%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
+}
+
+.blob4 {
+  width: 420px;
+  height: 420px;
+  top: 50%;
+  left: 55%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.1) 0%, transparent 70%);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black 15%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black 15%, transparent 80%);
+  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    700px circle at var(--sx, 50%) var(--sy, 50%),
+    rgba(124, 58, 237, 0.08) 0%,
+    rgba(79, 70, 229, 0.04) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.spotlightActive {
+  opacity: 1;
+}

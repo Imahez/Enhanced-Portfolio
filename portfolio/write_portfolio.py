@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="robots" content="index,follow"/>
-<title>Sreemaheshkumar S - Full Stack Java and React Developer</title>
-<meta name="description" content="Sreemaheshkumar S is a full-stack developer specialising in Java, Spring Boot, and React.js. Builder of MedVault and EcoWaste."/>
-<meta property="og:title" content="Sreemaheshkumar S - Full Stack Developer"/>
-<meta property="og:type" content="website"/>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237c3aed'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='36' font-weight='bold' fill='white'%3EM%3C/text%3E%3C/svg%3E"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>(function(){emailjs.init({publicKey:'Lr0xd2FOJ01UNMZhU'});})()</script>
-<style>
+#!/usr/bin/env python3
+# Writes the complete premium Vercel/Linear redesigned portfolio to index.html
+import os
+
+CSS = """
 :root{
   --bg:#000000;--bg-1:#050508;--bg-2:#0a0a12;
   --surface:rgba(255,255,255,0.03);--surface-2:rgba(255,255,255,0.055);
@@ -391,7 +379,25 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:40
 .back-top:hover{color:var(--text);border-color:rgba(124,58,237,0.4)}
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,0.3) 25%,rgba(79,70,229,0.3) 50%,rgba(37,99,235,0.25) 75%,transparent);border:none;margin:0}
 .tilt{transform-style:preserve-3d;transform:perspective(1200px);transition:transform .1s linear;will-change:transform}
-</style>
+"""
+
+HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="robots" content="index,follow"/>
+<title>Sreemaheshkumar S - Full Stack Java and React Developer</title>
+<meta name="description" content="Sreemaheshkumar S is a full-stack developer specialising in Java, Spring Boot, and React.js. Builder of MedVault and EcoWaste."/>
+<meta property="og:title" content="Sreemaheshkumar S - Full Stack Developer"/>
+<meta property="og:type" content="website"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237c3aed'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='36' font-weight='bold' fill='white'%3EM%3C/text%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>(function(){emailjs.init({publicKey:'Lr0xd2FOJ01UNMZhU'});})()</script>
+<style>CSS_PLACEHOLDER</style>
 </head>
 <body>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
@@ -671,9 +677,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:40
   </div>
 </div>
 </footer>
+"""
 
-<script>
-
+JS = """
 'use strict';
 const pfm  = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
@@ -793,7 +799,7 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.sta
 
 // Decode animation
 (function(){
-  const CH='!<>-_\\/[]{}=+*^?#________';
+  const CH='!<>-_\\\\/[]{}=+*^?#________';
   function dec(el,delay){const fin=el.dataset.final||'',finH=el.dataset.html||'';if(pfm){el.innerHTML=finH||fin;return;}let it=0,fr=0;setTimeout(()=>{const id=setInterval(()=>{fr++;el.textContent=fin.split('').map((c,i)=>{if(i<it)return fin[i];return i%2===0?CH[Math.floor(Math.random()*CH.length)]:c;}).join('');if(fr%3===0)it++;if(it>=fin.length){clearInterval(id);el.innerHTML=finH||fin;}},35);},delay);}
   document.querySelectorAll('.decode-line').forEach((el,i)=>dec(el,i*340));
 })();
@@ -801,24 +807,8 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.sta
 // Typing IDE
 (function(){
   const el=$('#typedCode');if(!el)return;
-  const cH=`<span class="ln">1</span><span class="kw">public class</span> <span class="cls">Developer</span> {
-<span class="ln">2</span>  <span class="kw">private</span> String name = <span class="str">"Sreemaheshkumar S"</span>;
-<span class="ln">3</span>  <span class="kw">private</span> String role = <span class="str">"Java Full Stack Dev"</span>;
-<span class="ln">4</span>  <span class="kw">private</span> String[] stack = {<span class="str">"Java"</span>,<span class="str">"Spring"</span>,<span class="str">"React"</span>};
-<span class="ln">5</span>  <span class="cmt">// Shipped: MedVault, EcoWaste</span>
-<span class="ln">6</span>  <span class="kw">public</span> <span class="fn">boolean</span> <span class="fn">isHireable</span>() {
-<span class="ln">7</span>    <span class="kw">return</span> <span class="fn">true</span>;
-<span class="ln">8</span>  }
-<span class="ln">9</span>}`;
-  const pT=`1 public class Developer {
-2   private String name = "Sreemaheshkumar S";
-3   private String role = "Java Full Stack Dev";
-4   private String[] stack = {"Java","Spring","React"};
-5   // Shipped: MedVault, EcoWaste
-6   public boolean isHireable() {
-7     return true;
-8   }
-9 }`;
+  const cH=`<span class="ln">1</span><span class="kw">public class</span> <span class="cls">Developer</span> {\n<span class="ln">2</span>  <span class="kw">private</span> String name = <span class="str">"Sreemaheshkumar S"</span>;\n<span class="ln">3</span>  <span class="kw">private</span> String role = <span class="str">"Java Full Stack Dev"</span>;\n<span class="ln">4</span>  <span class="kw">private</span> String[] stack = {<span class="str">"Java"</span>,<span class="str">"Spring"</span>,<span class="str">"React"</span>};\n<span class="ln">5</span>  <span class="cmt">// Shipped: MedVault, EcoWaste</span>\n<span class="ln">6</span>  <span class="kw">public</span> <span class="fn">boolean</span> <span class="fn">isHireable</span>() {\n<span class="ln">7</span>    <span class="kw">return</span> <span class="fn">true</span>;\n<span class="ln">8</span>  }\n<span class="ln">9</span>}`;
+  const pT=`1 public class Developer {\n2   private String name = "Sreemaheshkumar S";\n3   private String role = "Java Full Stack Dev";\n4   private String[] stack = {"Java","Spring","React"};\n5   // Shipped: MedVault, EcoWaste\n6   public boolean isHireable() {\n7     return true;\n8   }\n9 }`;
   function type(){if(pfm){el.innerHTML=cH;return;}let i=0;el.textContent='';const id=setInterval(()=>{el.textContent=pT.slice(0,i)+'|';i+=2;if(i>pT.length){clearInterval(id);el.innerHTML=cH;typeHint();}},14);}
   function typeHint(){const h=$('#termTypedHint');const msg='type help -> ';if(!h||pfm)return;let j=0;const id=setInterval(()=>{h.textContent=msg.slice(0,j++);if(j>msg.length){clearInterval(id);h.style.opacity='1';setTimeout(()=>{h.style.opacity='0';h.textContent='';},3000);}},60);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',type);else type();
@@ -850,7 +840,21 @@ if(form){form.addEventListener('submit',function(e){e.preventDefault();sb.disabl
 document.querySelectorAll('.contact-item[title="Click to copy"]').forEach(item=>{item.addEventListener('click',()=>{const p=item.querySelector('p');if(!p)return;navigator.clipboard?.writeText(p.textContent.trim()).then(()=>{const o=p.textContent;p.textContent='Copied!';setTimeout(()=>{p.textContent=o;},1800);});});});
 
 onScroll();
+"""
 
-</script>
-</body>
-</html>
+# Replace CSS placeholder in HTML
+html_out = HTML.replace("CSS_PLACEHOLDER", CSS)
+
+# Wrap JS in script tags
+final = html_out.replace("</footer>", "</footer>\n<script>\n" + JS + "\n</script>\n</body>\n</html>")
+
+# Remove the placeholder </body></html> from HTML since we added them above
+# Actually HTML template doesn't have them - let's just write as is with the script appended
+# Final content
+output = html_out + "\n<script>\n" + JS + "\n</script>\n</body>\n</html>"
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(output)
+
+size = os.path.getsize("index.html")
+print(f"SUCCESS: index.html written, size={size} bytes")
